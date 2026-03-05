@@ -2,7 +2,13 @@
 
 > **Caso de uso simulado:** Análisis de datos de Airbnb en Barcelona para una empresa que evalúa lanzar un servicio de **lockers para valijas y gestión de llaves**, orientado a propietarios de alojamientos particulares.
 
-<img width="1262" height="711" alt="image" src="https://github.com/user-attachments/assets/a304f260-6c11-4982-86a1-6d302044d341" />
+![dashcompleto](https://github.com/user-attachments/assets/42dc5f97-44a2-4e63-8ecd-c05c7b880a24)
+
+---
+
+## 📥 Descargar Dashboard
+
+[⬇️ Descargar archivo .pbix](https://drive.google.com/file/d/19q4IImJJBKNBNIq_jgLnFp2WG3bWV_sX/view?usp=drive_link)
 
 ---
 
@@ -22,13 +28,23 @@ Para definir su estrategia comercial, necesita entender:
 
 ## 📊 Dashboard
 
-### Vista General
+### KPIs Principales
 
 | KPI | Valor |
 |---|---|
 | 💰 Precio Promedio | € 193 |
 | 📅 Cantidad de Eventos | 1,40M |
 | 🏠 Alojamientos Activos | 14K |
+
+### Vistas del Dashboard
+
+| Vista completa | Filtro: Particulares |
+|---|---|
+| ![Dashboard completo](assets/dashcompleto.jpg) | ![Filtro particulares](assets/dashparticular.jpg) |
+
+| Filtro: Barrio | Todos los filtros |
+|---|---|
+| ![Filtro barrio](assets/dashbarrio.jpg) | ![Todos los filtros](assets/dashallfilters.jpg) |
 
 ### Visualizaciones incluidas
 
@@ -80,7 +96,7 @@ Las empresas aparecen en gris en el dashboard porque no son el público objetivo
 ├── Tabla: listings          ← datos base de alojamientos
 ├── Tabla: calendar          ← disponibilidad y reservas
 ├── Tabla: reviews           ← actividad y eventos
-├── Tabla: neighbourhoods    ← barrios y grupo de barrios
+├── Tabla: neighbourhoods    ← barrios
 │
 ├── Tabla: Date              ← tabla de fechas creada manualmente
 │   └── Relacionada con calendar[date] y reviews[date]
@@ -99,22 +115,18 @@ Las empresas aparecen en gris en el dashboard porque no son el público objetivo
 ## 🗂️ Estructura del Repositorio
 
 ```
-airbnb-bcn-locker-dashboard/
+bcn-airbnb-locker-market-analysis/
 │
 ├── README.md
 │
-├── dashboard/
-│   └── airbnb_bcn_locker.pbix        ← archivo Power BI
-│
-├── assets/
-│   ├── dashboard_overview.png         ← vista general (sin filtros)
-│   ├── dashboard_particulares.png     ← filtrado: solo particulares
-│   ├── dashboard_empresas.png         ← filtrado: solo empresas
-│   └── dashboard_superhost.png        ← filtrado: no-superhost
-│
-└── data/
-    └── SOURCE.md                      ← descripción de la fuente de datos
+└── assets/
+    ├── dashcompleto.jpg        ← vista general sin filtros
+    ├── dashparticular.jpg      ← filtrado: solo particulares
+    ├── dashbarrio.jpg          ← filtrado: por barrio
+    └── dashallfilters.jpg      ← todos los filtros aplicados
 ```
+
+> El archivo `.pbix` está disponible para descarga en Google Drive (ver link al inicio).
 
 ---
 
@@ -137,5 +149,5 @@ Los archivos originales (`listings.csv`, `calendar.csv`, `reviews.csv`) no se in
 
 ## 👤 Autor
 
-**Emilio Echagüe**  
-[LinkedIn](https://www.linkedin.com/in/emilioechague)
+**[Tu Nombre]**  
+[LinkedIn](https://linkedin.com/in/tu-perfil) · [Portfolio](https://tu-portfolio.com)
