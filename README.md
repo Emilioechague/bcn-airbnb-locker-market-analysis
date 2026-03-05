@@ -3,6 +3,7 @@
 > **Caso de uso simulado:** Análisis de datos de Airbnb en Barcelona para una empresa que evalúa lanzar un servicio de **lockers para valijas y gestión de llaves**, orientado a propietarios de alojamientos particulares.
 
 ![Dashboard Overview](assets/dashcompleto.jpg)
+![Dashboard Overview](assets/dashcompleto_beige.jpg)
 
 ---
 
