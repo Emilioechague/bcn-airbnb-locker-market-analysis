@@ -149,5 +149,5 @@ Los archivos originales (`listings.csv`, `calendar.csv`, `reviews.csv`) no se in
 
 ## 👤 Autor
 
-**[Tu Nombre]**  
-[LinkedIn](https://linkedin.com/in/tu-perfil) · [Portfolio](https://tu-portfolio.com)
+**[Emilio Echagüe]**  
+[LinkedIn](https://www.linkedin.com/in/emilioechague)
