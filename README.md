@@ -2,13 +2,16 @@
 
 > **Caso de uso simulado:** Análisis de datos de Airbnb en Barcelona para una empresa que evalúa lanzar un servicio de **lockers para valijas y gestión de llaves**, orientado a propietarios de alojamientos particulares.
 
-![dashcompleto](https://github.com/user-attachments/assets/42dc5f97-44a2-4e63-8ecd-c05c7b880a24)
+![Dashboard Overview](assets/dashcompleto.jpg)
 
 ---
 
 ## 📥 Descargar Dashboard
 
-[⬇️ Descargar archivo .pbix](https://drive.google.com/file/d/19q4IImJJBKNBNIq_jgLnFp2WG3bWV_sX/view?usp=drive_link)
+| Versión | Link |
+|---|---|
+| 🔵 Azul | [⬇️ Descargar .pbix](https://drive.google.com/file/d/19q4IImJJBKNBNIq_jgLnFp2WG3bWV_sX/view?usp=drive_link) |
+| 🟤 Beige | [⬇️ Descargar .pbix](https://drive.google.com/file/d/1gv8Q4cmvVVqBIlhXjBoonh4J6V3XlGId/view?usp=drive_link) |
 
 ---
 
@@ -36,7 +39,13 @@ Para definir su estrategia comercial, necesita entender:
 | 📅 Cantidad de Eventos | 1,40M |
 | 🏠 Alojamientos Activos | 14K |
 
-### Vistas del Dashboard
+---
+
+## 🎨 Dos versiones de diseño
+
+El mismo dashboard fue desarrollado en dos paletas de color distintas, manteniendo idéntica la lógica y estructura de información. Ambas respetan el mismo principio: **el color primario identifica a los Particulares** (público objetivo) y el **gris/neutro a las Empresas** (aliados potenciales), codificado una sola vez en el título para evitar redundancia de leyendas.
+
+### Versión Azul
 
 | Vista completa | Filtro: Particulares |
 |---|---|
@@ -45,6 +54,26 @@ Para definir su estrategia comercial, necesita entender:
 | Filtro: Barrio | Todos los filtros |
 |---|---|
 | ![Filtro barrio](assets/dashbarrio.jpg) | ![Todos los filtros](assets/dashallfilters.jpg) |
+
+### Versión Beige
+
+| Vista completa | Filtro: Particulares |
+|---|---|
+| ![Dashboard beige completo](assets/dashcompleto_beige.jpg) | ![Filtro particulares beige](assets/dashparticular_beige.jpg) |
+
+| Filtro: Barrio | Todos los filtros |
+|---|---|
+| ![Filtro barrio beige](assets/dashbarrio_beige.jpg) | ![Todos los filtros beige](assets/dashallfilters_beige.jpg) |
+
+---
+
+## 🖌️ Decisiones de Diseño
+
+El dashboard fue diseñado para **minimizar el ruido visual** y maximizar la claridad:
+
+- **Paleta bicolor:** El color primario (azul en v1, beige en v2) identifica a los **Particulares**; el gris claro a las **Empresas**. El código se explica *una sola vez* en el título, evitando repetir leyendas en cada gráfico.
+- **Valores visibles donde importan:** Los eventos por barrio incluyen etiquetas de datos porque el *volumen exacto* es relevante para la toma de decisiones. La serie temporal no las incluye porque el foco allí es la tendencia de crecimiento.
+- **Elementos neutros en segundo plano:** El fondo y los elementos decorativos en gris claro reducen la carga cognitiva y dirigen la atención a los datos.
 
 ### Visualizaciones incluidas
 
@@ -57,23 +86,13 @@ Para definir su estrategia comercial, necesita entender:
 
 | Filtro | Descripción |
 |---|---|
-| 📆 Fecha | Rango temporal 2010–2024 |
 | 👤 Tipo de Propietario | Particular / Empresa / Todos |
+| 📆 Fecha | Rango temporal |
 | 📍 Ubicación | Filtro por barrio |
 | 🏡 Tipo de Alojamiento | Casa entera / Habitación privada / Compartida |
 | ⭐ Superhost | Sí / No / Todos |
 
-> **Nota sobre el filtro Superhost:** Permite identificar propietarios *no-superhost*, que son el segmento con mayor potencial de mejora de servicio y, por tanto, los más receptivos a una propuesta de valor externa.
-
----
-
-## 🎨 Decisiones de Diseño
-
-El dashboard fue diseñado para **minimizar el ruido visual** y maximizar la claridad:
-
-- **Paleta bicolor:** Azul oscuro para **Particulares** (público objetivo) — Gris claro para **Empresas** (aliados potenciales). El código de colores se explica *una sola vez* en el título del dashboard (`Particulares vs Empresas`), evitando redundancia de leyendas.
-- **Valores visibles donde importan:** Los eventos por barrio incluyen etiquetas de datos porque el *volumen exacto* es relevante para la toma de decisiones. La serie temporal *no* las incluye porque allí el foco es la tendencia de crecimiento, no el número puntual.
-- **Fondo y elementos neutros en gris claro:** Reducen la carga cognitiva y dirigen la atención a los datos.
+> **Nota sobre el filtro Superhost:** Permite identificar propietarios *no-superhost*, el segmento con mayor potencial de mejora y más receptivo a una propuesta de valor externa.
 
 ---
 
@@ -86,7 +105,7 @@ SI un mismo host_id tiene más de 5 listings → se clasifica como "Empresa"
 EN CASO CONTRARIO → se clasifica como "Particular"
 ```
 
-Las empresas aparecen en gris en el dashboard porque no son el público objetivo directo del servicio de lockers, pero se mantienen visibles como **potenciales socios estratégicos** (B2B).
+Las empresas se mantienen visibles en el dashboard como **potenciales socios estratégicos** (B2B).
 
 ### Estructura del Modelo
 
@@ -96,7 +115,7 @@ Las empresas aparecen en gris en el dashboard porque no son el público objetivo
 ├── Tabla: listings          ← datos base de alojamientos
 ├── Tabla: calendar          ← disponibilidad y reservas
 ├── Tabla: reviews           ← actividad y eventos
-├── Tabla: neighbourhoods    ← barrios
+├── Tabla: neighbourhoods    ← actividad y eventos
 │
 ├── Tabla: Date              ← tabla de fechas creada manualmente
 │   └── Relacionada con calendar[date] y reviews[date]
@@ -104,11 +123,10 @@ Las empresas aparecen en gris en el dashboard porque no son el público objetivo
 └── Tabla: _Medidas          ← tabla dedicada exclusivamente a métricas DAX
     ├── Precio Promedio
     ├── Cantidad de Eventos
-    ├── Alojamientos Activos
-    └── [otras métricas]
+    └── Alojamientos Activos
 ```
 
-> La separación de medidas en una tabla propia (`_Medidas`) es una **buena práctica de desarrollo en Power BI**: facilita el mantenimiento, mejora la legibilidad del modelo y evita mezclar lógica de negocio con datos crudos.
+> La separación de medidas en una tabla propia (`_Medidas`) es una **buena práctica en Power BI**: facilita el mantenimiento y evita mezclar lógica de negocio con datos crudos.
 
 ---
 
@@ -120,10 +138,14 @@ bcn-airbnb-locker-market-analysis/
 ├── README.md
 │
 └── assets/
-    ├── dashcompleto.jpg        ← vista general sin filtros
-    ├── dashparticular.jpg      ← filtrado: solo particulares
-    ├── dashbarrio.jpg          ← filtrado: por barrio
-    └── dashallfilters.jpg      ← todos los filtros aplicados
+    ├── dashcompleto.jpg           ← v. azul: sin filtros
+    ├── dashparticular.jpg         ← v. azul: solo particulares
+    ├── dashbarrio.jpg             ← v. azul: filtro barrio
+    ├── dashallfilters.jpg         ← v. azul: todos los filtros
+    ├── dashcompleto_beige.jpg     ← v. beige: sin filtros
+    ├── dashparticular_beige.jpg   ← v. beige: solo particulares
+    ├── dashbarrio_beige.jpg       ← v. beige: filtro barrio
+    └── dashallfilters_beige.jpg   ← v. beige: todos los filtros
 ```
 
 > El archivo `.pbix` está disponible para descarga en Google Drive (ver link al inicio).
@@ -134,9 +156,7 @@ bcn-airbnb-locker-market-analysis/
 
 **Inside Airbnb** — [insideairbnb.com](http://insideairbnb.com)
 
-> Inside Airbnb es un proyecto independiente que recopila y analiza datos públicos de Airbnb. Los datos utilizados corresponden a la ciudad de **Barcelona, España**.
-
-Los archivos originales (`listings.csv`, `calendar.csv`, `reviews.csv`) no se incluyen en este repositorio por su tamaño. Pueden descargarse directamente desde el sitio de Inside Airbnb filtrando por Barcelona.
+Los archivos originales (`listings.csv`, `calendar.csv`, `reviews.csv`) no se incluyen por su tamaño. Pueden descargarse desde el sitio de Inside Airbnb filtrando por Barcelona.
 
 ---
 
@@ -149,5 +169,5 @@ Los archivos originales (`listings.csv`, `calendar.csv`, `reviews.csv`) no se in
 
 ## 👤 Autor
 
-**[Emilio Echagüe]**  
+**Emilio Echagüe**  
 [LinkedIn](https://www.linkedin.com/in/emilioechague)
